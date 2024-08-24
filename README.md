@@ -1,7 +1,7 @@
 # Hotel Reservation API Abstraction Challenge
 
 ## Description
-The [initial code](https://github.com/welf/reservation-service-challenge/blob/initial-code/src/main.rs) is located [in the `initial-code` branch](https://github.com/welf/reservation-service-challenge/tree/initial-code) and is a simple implementation of the API for a hotel reservation system using [Axum](https://docs.rs/axum/latest/axum/) server.
+The [initial code](https://github.com/welf/reservation-service-challenge/blob/initial-code/src/main.rs) is located in the [`initial-code` branch](https://github.com/welf/reservation-service-challenge/tree/initial-code) and is a simple implementation of the API for a hotel reservation system using [Axum](https://docs.rs/axum/latest/axum/) server.
 
 Using the API, it is possible to:
 - get all reservations;
