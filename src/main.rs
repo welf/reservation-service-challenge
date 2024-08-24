@@ -4,7 +4,6 @@ mod database;
 mod drivers;
 mod entities;
 mod messages;
-mod reservation;
 mod services;
 
 use app_handlers::{create_reservation, delete_reservation, get_outbox, get_reservations};
