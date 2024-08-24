@@ -1,8 +1,7 @@
-pub mod create_reservation;
 pub mod reservation;
+pub mod reservation_request;
 pub mod user;
 
-#[allow(unused)]
-pub use create_reservation::CreateReservation;
 pub use reservation::Reservation;
+pub use reservation_request::ReservationRequest;
 pub use user::User;

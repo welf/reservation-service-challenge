@@ -7,7 +7,7 @@ use hyper::StatusCode;
 use crate::{
     app_state::AppState,
     services::{
-        CreateReservationRequestService, GetOutboxService, ReservationDatabaseService,
+        GetOutboxService, ReservationDatabaseService, ReservationRequestService,
         ReservationService, SendReservationMessageService, UserService,
     },
 };
@@ -30,7 +30,7 @@ pub async fn create_reservation<DB, MessageService, ReservationRequest>(
 where
     DB: ReservationDatabaseService + Clone,
     MessageService: SendReservationMessageService + GetOutboxService,
-    ReservationRequest: CreateReservationRequestService,
+    ReservationRequest: ReservationRequestService,
 {
     let mut db = state.db.lock().await;
     let id = db.get_reservations().len() as u64 + 1;
@@ -92,7 +92,7 @@ mod tests {
     use crate::{
         database::MockDatabase,
         drivers::MockMailer,
-        entities::{CreateReservation, Reservation},
+        entities::{Reservation, ReservationRequest},
         messages::Email,
     };
     use axum::{
@@ -112,7 +112,7 @@ mod tests {
             .route("/reservations", get(get_reservations))
             .route(
                 "/reservations",
-                post(create_reservation::<MockDatabase, MockMailer<Email>, CreateReservation>),
+                post(create_reservation::<MockDatabase, MockMailer<Email>, ReservationRequest>),
             )
             .route("/reservations/:id", delete(delete_reservation))
             .route("/mailer/outbox", get(get_outbox))

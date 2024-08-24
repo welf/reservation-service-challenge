@@ -1,15 +1,15 @@
 use serde::Deserialize;
 
-use crate::services::CreateReservationRequestService;
+use crate::services::ReservationRequestService;
 
 #[derive(Deserialize)]
-pub struct CreateReservation {
+pub struct ReservationRequest {
     name: String,
     email: String,
     room: String,
 }
 
-impl CreateReservationRequestService for CreateReservation {
+impl ReservationRequestService for ReservationRequest {
     fn name(&self) -> String {
         self.name.clone()
     }

@@ -10,7 +10,7 @@ use app_handlers::{create_reservation, delete_reservation, get_outbox, get_reser
 use app_state::AppState;
 use database::MockDatabase;
 use drivers::MockMailer;
-use entities::CreateReservation;
+use entities::ReservationRequest;
 use messages::Email;
 
 use axum::{
@@ -28,7 +28,7 @@ async fn main() {
         .route("/reservations", get(get_reservations))
         .route(
             "/reservations",
-            post(create_reservation::<MockDatabase, MockMailer<Email>, CreateReservation>),
+            post(create_reservation::<MockDatabase, MockMailer<Email>, ReservationRequest>),
         )
         .route("/reservations/:id", delete(delete_reservation))
         .route("/mailer/outbox", get(get_outbox))
